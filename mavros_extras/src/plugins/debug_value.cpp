@@ -48,7 +48,7 @@ public:
 			       make_handler(&DebugValuePlugin::handle_debug_vector),
 			       make_handler(&DebugValuePlugin::handle_named_value_float),
 			       make_handler(&DebugValuePlugin::handle_named_value_int),
-				   make_handler(&DebugValuePlugin::handle_debug_float_array)
+			       make_handler(&DebugValuePlugin::handle_debug_float_array)
 		};
 	}
 
@@ -182,7 +182,7 @@ private:
 
 	/**
 	 * @brief Handle DEBUG_FLOAT_ARRAY message.
-	 * Message specification: https://mavlink.io/en/messages/common.html#DEBUG_FLOAT_ARRAY 
+	 * Message specification: https://mavlink.io/en/messages/common.html#DEBUG_FLOAT_ARRAY
 	 * @param msg	Received Mavlink msg
 	 * @param debug	DEBUG_FLOAT_ARRAY msg
 	 */
@@ -286,7 +286,7 @@ private:
 		}
 		case mavros_msgs::DebugValue::TYPE_DEBUG_ARRAY:		{
 			mavlink::common::msg::DEBUG_FLOAT_ARRAY debug {};
-			
+
 			debug.time_usec = req->header.stamp.toNSec() / 1000;
 			mavlink::set_string(debug.name, req->name);
 

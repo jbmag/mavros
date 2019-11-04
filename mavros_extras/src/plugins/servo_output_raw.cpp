@@ -41,7 +41,7 @@ private:
     void handle_servo_output_raw(const mavlink::mavlink_message_t *msg, mavlink::common::msg::SERVO_OUTPUT_RAW &servo_output)
     {
         auto sor_msg = boost::make_shared<mavros_msgs::ServoOutputRaw>();
-        sor_msg->header.stamp = m_uas->synchronise_stamp(servo_output.time_usec);
+        sor_msg->header.stamp = m_uas->synchronise_stamp(static_cast<uint64_t>(servo_output.time_usec));
         sor_msg->port = servo_output.port;
         sor_msg->servo1 = servo_output.servo1_raw;
         sor_msg->servo2 = servo_output.servo2_raw;
